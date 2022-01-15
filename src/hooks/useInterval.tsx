@@ -7,6 +7,7 @@ interface IUseInterval {
 
 const useInterval = ({ callback, delay }: IUseInterval) => {
   const savedCallback = useRef<() => void>();
+
   //마지막 콜백함수 저장을 위함
   useEffect(() => {
     savedCallback.current = callback;

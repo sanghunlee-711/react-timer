@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import { useTimerState } from '../hooks/useContext';
 import useInterval from '../hooks/useInterval';
 import { Status } from '../types';
 import { twoDigits } from '../utils';
 
 const Event = () => {
-  const status = Status.Open;
-  const rest = 0;
+  const state = useTimerState();
+  const { rest, status } = state;
+  console.log(state, twoDigits);
   const [secondsRemaining, setSecondsRemaining] = useState<number>(rest);
+
   const secondsToDisplay = secondsRemaining % 60;
   const minutesRemaining = (secondsRemaining - secondsToDisplay) / 60;
   const minutesToDisplay = minutesRemaining % 60;

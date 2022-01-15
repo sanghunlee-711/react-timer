@@ -1,15 +1,12 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import useInterval from '../../hooks/useInterval';
 import { Status } from '../../types';
-import useTimer from './hooks/useHeader';
+import useHeader from './hooks/useHeader';
 
 const Header = () => {
   const location = useLocation();
-  const { state, actions } = useTimer();
+  const { state } = useHeader();
   const { status, rest } = state;
-
-  const isOpen = true;
 
   return (
     <header
@@ -30,7 +27,7 @@ const Header = () => {
         </Link>
       )}
 
-      {isOpen && <div>Event Status : {Status.Open}</div>}
+      {status === Status.Open && <div>Event Status : {Status.Open}</div>}
     </header>
   );
 };
